@@ -149,18 +149,78 @@
 	// }
 
 	// paint image
+	// if (drawing.getContext) {
+	// 	var context = drawing.getContext('2d'),
+	// 		image = document.getElementById("zhihu-avatar");
+
+	// 	// method drawImage(imgObj, destx, desty)
+	// 	// method drawImage(imgObj, destx, desty, destsizex, destsizey)
+	// 	// method drawImage(imgObj, originx, originy, originsizex, originsizey, destx, desty, destsizex, destsizey)
+	// 	context.drawImage(image, 50, 10);
+
+	// 	// method drawImage(canvasObj), to paint one canvas on another canvas
+
+	// }
+
+	// paint shadow
+	// problem: chrome and safari have problem in applying the transparent pixel to shadow, and also safari cannot apply shadow to gradient entity.
+	// if (drawing.getContext) {
+	// 	var context = drawing.getContext('2d');
+	// 	// context shadow property shadowOffsetX shadowOffsetY shadowBlur shadowColor
+	// 	context.shadowOffsetY = 5;
+	// 	context.shadowOffsetX = 5;
+	// 	context.shadowBlur = 4;
+	// 	context.shadowColor = "rgba(0, 0, 0, 0.5)";
+
+	// 	context.fillStyle = "#ff0000";
+	// 	context.fillRect(10, 10, 50, 50);
+
+	// 	console.log(context);
+	// }
+
+	// gradient
+	// method: 
+	// createLinearGradient(x, y, x + width, y + height)
+	// createRadiaGradient(originx, oringiny, originradius, destx, desty, destorigin)
+	// if (drawing.getContext) {
+	// 	var context = drawing.getContext('2d'),
+	// 		gradient = createRectLinearGradient(context, 30, 30, 20, 20),
+	// 		radialGradient = context.createRadialGradient(55, 55, 10, 55, 55, 30);
+
+	// 	// color set and css color
+	// 	radialGradient.addColorStop(0, "white");
+	// 	radialGradient.addColorStop(1, "black");
+
+	// 	context.fillStyle = "#ff0000";
+	// 	context.fillRect(10, 10, 50, 50);
+
+	// 	context.fillStyle = radialGradient;
+	// 	context.fillRect(30, 30, 50, 50);
+
+	// }
+
+
+	// pattern: repeat image
+	// metod: createPattern([video, canvas, image], "pattern")
 	if (drawing.getContext) {
 		var context = drawing.getContext('2d'),
-			image = document.getElementById("zhihu-avatar");
+			image = document.getElementById("zhihu-avatar"),
+			pattern = context.createPattern(image, "repeat");
 
-		// method drawImage(imgObj, destx, desty)
-		// method drawImage(imgObj, destx, desty, destsizex, destsizey)
-		// method drawImage(imgObj, originx, originy, originsizex, originsizey, destx, desty, destsizex, destsizey)
-		context.drawImage(image, 50, 10);
-
-		// method drawImage(canvasObj), to paint one canvas on another canvas
+		context.fillStyle = pattern;
+		context.fillRect(10, 10, 150, 150);
 
 	}
+
+	// other method: getImageData(x, y, width, height):ImageData which has data array which compose of red, green, blue, alpha
+	// putImageData(imagedata, x, y)
+	// property: globalAlpha,
+	// globalCompositionOperation(value(string): source-over(default) source-in source-out source-atop 
+	// destination-over destination-in destination-out destination-atop lighter copy xor), but defferent browser has different complement 
+
+	// WebGL based on OpenGl ES 3d not w3c standard ref Khronos Group 
+
+
 
 
 	//show image
@@ -168,5 +228,9 @@
 	// var image = document.createElement('img');
 	// image.src = imageURI;
 	// document.body.appendChild(image);
+
+	function createRectLinearGradient(context, x, y, width, height) {
+		return context.createLinearGradient(x, y, x + width, y + height);
+	}
 
 }).call(this);
