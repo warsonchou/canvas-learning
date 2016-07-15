@@ -1,0 +1,22 @@
+{
+  "name": "livereload",
+  "version": "1.0.0",
+  "description": "livereload learning ",
+  "main": "index.js",
+  "scripts": {
+    "test": "yes"
+  },
+  "keywords": [
+    "no"
+  ],
+  "author": "zhou",
+  "license": "MIT",
+  "devDependencies": {
+    "connect-livereload": "^0.5.4",
+    "grunt": "^1.0.1",
+    "grunt-contrib-connect": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "serve-index": "^1.7.3",
+    "serve-static": "^1.10.2"
+  }
+}
