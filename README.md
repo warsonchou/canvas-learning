@@ -6,7 +6,7 @@
 	自动刷新
 
 ##使用方法
-	1. npm install
-	* 然后将js文件，css文件，image文件，分别放在js文件夹，css文件夹以及image文件夹底下
-	* grunt live
-	* 在浏览器访问localhost:8000
+1. npm install
+* 然后将js文件，css文件，image文件，分别放在js文件夹，css文件夹以及image文件夹底下
+* grunt live
+* 在浏览器访问localhost:8000
