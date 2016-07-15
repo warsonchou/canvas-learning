@@ -218,10 +218,36 @@
 	// globalCompositionOperation(value(string): source-over(default) source-in source-out source-atop 
 	// destination-over destination-in destination-out destination-atop lighter copy xor), but defferent browser has different complement 
 
-	// WebGL based on OpenGl ES 3d not w3c standard ref Khronos Group 
 
+	// -----------------------------------------------------------------------------------------
 
+	// WebGL based on OpenGl ES, 3d not w3c standard ref Khronos Group 
 
+	// 类型化数组， 原生的js提供无法满足需求
+	// DataView(buffer, start, [size]):obj which ahs byteOffset and byteLength property, it is manage the data type to write
+	// DataView may littleEndian, DataView has subclass(refer 15.3)
+	var buffer = new ArrayBuffer(20),
+		bytes = buffer.byteLength,
+		view = new DataView(buffer),
+		gl
+		;
+
+	// gl = drawing.getContext("experimental-webgl", obj) -> obj: {alpha, depth,stencil, antilalais, premultipliedAlpha, preserveDrawingBuffer}
+	if (drawing.getContext) {
+		try {
+			gl = drawing.getContext("experimental-webgl");
+		} catch(ex){
+
+		}
+		if (gl) {
+			gl.clearColor(0, 0, 0, 1);
+			gl.clear(gl.COLOR_BUFFER_BIT);
+
+			gl.viewport(0, 0, drawing.width, drawing.height);
+		} else {
+
+		}
+	}
 
 	//show image
 	// var imageURI = drawing.toDataURL('image/png'); // the canvas image could not come from the other domain
